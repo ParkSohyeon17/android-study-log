@@ -3,7 +3,7 @@
 
 ### week 1
 * [android-decompress](study/week1/android-decompress.md)
-* [제목-](링크)
+* [onBindViewHolder()](study/week1/onBindViewHolder().md)
 
 ### week 2
 * [제목-](링크)
