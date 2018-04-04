@@ -6,5 +6,5 @@
 * [onBindViewHolder()](study/week1/onBindViewHolder().md)
 
 ### week 2
-* [제목-](링크)
+* [about-handler](study/week2/about-handler.md)
 * [제목-](링크)
