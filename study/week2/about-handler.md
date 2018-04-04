@@ -3,7 +3,7 @@
 
 > present time : 2018-04-01-SUN  
 > presentation file : https://docs.google.com/presentation/d/13F7J1ZK8wa_7_VwpQTovt3sy1aRPlNZZe6nNyaCsoSE/edit?usp=sharing  
-> last updated : 2018-04-05-03:11-seohyun99
+> last updated : 2018-04-05-03:21-seohyun99
 
 ----------------
 
@@ -65,10 +65,25 @@ public Handler(Callback callback, boolean async) {
 
 **post**(Runnable r), **postDelayed**(Runnable r, long delayMillis), **sendMessage**(Message msg), **sendEmptyMessage**(int what)의 내부는 **sendMessageDelayed**(Message msg, long delayMillis)와 **sendMessageAtTime**(Message msg, long uptimeMillis)를 거쳐 전부 **enqueueMessag**(MessageQueue queue, Message msg, long uptimeMillis)로 연결되어 있는 것을 볼 수 있다.
 
-- **post(Runnable r)** → sendMessageDelayed(getPostMessage(r), 0) → sendMessageAtTime(msg, SystemClock.uptimeMillis() + delayMillis) → sendMessageAtTime(msg, SystemClock.uptimeMillis() + delayMillis)
-- **postDelayed(Runnable r, long delayMillis)** → sendMessageDelayed(getPostMessage(r), delayMillis) → sendMessageAtTime(msg, SystemClock.uptimeMillis() + delayMillis) → sendMessageAtTime(msg, SystemClock.uptimeMillis() + delayMillis)
-- **sendMessage(Message msg)** → sendMessageDelayed(msg, 0) → sendMessageAtTime(msg, SystemClock.uptimeMillis() + delayMillis) → sendMessageAtTime(msg, SystemClock.uptimeMillis() + delayMillis)
-- **sendEmptyMessage(int what)** → sendMessageDelayed(msg, 0) → sendMessageAtTime(msg, SystemClock.uptimeMillis() + delayMillis) → sendMessageAtTime(msg, SystemClock.uptimeMillis() + delayMillis)
+- **post(Runnable r)** →   
+sendMessageDelayed(getPostMessage(r), 0) →   
+sendMessageAtTime(msg, SystemClock.uptimeMillis() + delayMillis) →  
+**enqueueMessage**(queue, msg, uptimeMillis)
+
+- **postDelayed(Runnable r, long delayMillis)** →   
+sendMessageDelayed(getPostMessage(r), delayMillis) →  
+sendMessageAtTime(msg, SystemClock.uptimeMillis() + delayMillis) →  
+**enqueueMessage**(queue, msg, uptimeMillis)
+
+- **sendMessage(Message msg)** →  
+sendMessageDelayed(msg, 0) →  
+sendMessageAtTime(msg, SystemClock.uptimeMillis() + delayMillis) →  
+**enqueueMessage**(queue, msg, uptimeMillis)
+
+- **sendEmptyMessage(int what)** →  
+sendMessageDelayed(msg, 0) →  
+sendMessageAtTime(msg, SystemClock.uptimeMillis() + delayMillis) →  
+**enqueueMessage**(queue, msg, uptimeMillis)
 
 ```java
 private boolean enqueueMessage(MessageQueue queue, Message msg, long uptimeMillis) {
@@ -275,7 +290,8 @@ public void quitSafely() {
 }
 ```
 
-quit()는 MessageQueue의 [quit](#MessageQueue)(boolean unsafe)로 넘어가게 된다. 파라미터로 넘어오는 boolean 값의 따라 내부가 분기된다.
+quit()는 **MessageQueue의 quit(boolean unsafe)**로 넘어가게 된다. 파라미터로 넘어오는 boolean 값의 따라 내부가 분기된다.  
+*(MessageQueue의 quit는 3. MessageQueue 부분에 정리되어 있다.)*
 
 
 
