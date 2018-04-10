@@ -1,8 +1,8 @@
-# about-livedata-and-viewmodel
-> Handler의 관한 것을 정리
+# livedata-and-viewmodel
+> Android Architecture Components로 소개된 LiveData와 ViewModel에 대하여.
 >
-> present time : 2018-04-01-SUN
-> last updated : 2018-04-05-03:21-seohyun99
+> present time : 2018-04-07-SAT  
+> last updated : 2018-04-11-03:42-seohyun99
 
 ----------------
 
