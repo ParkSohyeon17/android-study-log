@@ -7,4 +7,6 @@
 
 ### week 2
 * [about-handler](study/week2/about-handler.md)
-* [제목-](링크)
+
+### week 3
+* [livedata-and-viewmodel](study/week3/livedata-and-viewmodel.md)
