@@ -10,3 +10,7 @@
 
 ### week 3
 * [livedata-and-viewmodel](study/week3/livedata-and-viewmodel.md)
+
+### week 4
+
+- [android-architecture-pattern](study/week4/android-architecture-pattern.md)
